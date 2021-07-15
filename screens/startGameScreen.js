@@ -32,7 +32,7 @@ const StartGameScreen = props => {
     const confirmInputHandler = () => {
         const chosenNumber = parseInt(enteredValue);
         if ( isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
-            Alert.alert("Invalid Number", "Number should be between 0 and 100", [{text: "Okay", style: "destructive", onPress: resetInputHandler }])
+            Alert.alert("Invalid Number", "Number should be between 0 and 100", [{text: "Okay", style: "destructive", onPress: resetInputHandler }]);
             return;
         }
         setConfirmed(true);
@@ -48,7 +48,7 @@ const StartGameScreen = props => {
         <Card style={styles.summaryContainer}>
             <Text>You Selected</Text>
             <NumberContainer>{selectedNumber}</NumberContainer>
-            <Button title="START GAME" color={Colors.primary} />
+            <Button title="START GAME" color={Colors.primary} onPress={() => props.onStartGame(selectedNumber)} />
         </Card>
     }
 
