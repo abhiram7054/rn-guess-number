@@ -46,7 +46,7 @@ const StartGameScreen = props => {
     if (confirmed) {
         confirmedOutput = 
         <Card style={styles.summaryContainer}>
-            <Text>You Selected</Text>
+            <Text style={styles.fontRegular}>You Selected</Text>
             <NumberContainer>{selectedNumber}</NumberContainer>
             <Button title="START GAME" color={Colors.primary} onPress={() => props.onStartGame(selectedNumber)} />
         </Card>
@@ -58,7 +58,7 @@ const StartGameScreen = props => {
                 <Text style={styles.title}>Start a New Game!</Text> 
                 <Card style={styles.inputContainer}>
                     <View style={styles.inputContainer}>
-                        <Text> Enter a Number </Text>
+                        <Text style={styles.fontRegular}> Enter a Number </Text>
                         <Input style={styles.input} 
                         blurOnSubmit 
                         autoCapitalize="none" 
@@ -87,22 +87,26 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start"
     },
     title:{
-        fontSize: 22,
+        fontSize: 20,
         marginVertical: 10,
+        fontFamily: "bold",
     },
     inputContainer: {
         width: 300,
         maxWidth: "100%",
         alignItems: "center",
+        // fontFamily: "bold"
     },
     buttonContainer: {
         flexDirection: "row",
         width: "100%",
         justifyContent: "space-between",
         paddingHorizontal: 15,
+        // fontFamily: "bold"
     },
     button: {
         width: 90,
+        // fontFamily: "bold"
     },
     input: {
         width: 50,
@@ -111,6 +115,12 @@ const styles = StyleSheet.create({
     summaryContainer: {
         marginTop: 20,
         alignItems:"center",
+    },
+    fontRegular: {
+        fontFamily: "regular",
+    },
+    fontBold : {
+        fontFamily: "bold"
     }
 });
 

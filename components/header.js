@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     },
     headerText: {
         color: "black",
-        fontSize: 20,
+        fontSize: 25,
+        fontFamily: "bold"
     }
 });
 
