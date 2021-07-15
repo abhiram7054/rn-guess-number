@@ -13,6 +13,8 @@ import Card from "../components/card";
 import Colors from "../constants/colors";
 import Input from "../components/input";
 import NumberContainer from "../components/numberContainer";
+import BodyText from "../components/bodyText";
+import BoldText from "../components/boldText";
 
 const StartGameScreen = props => {
 
@@ -55,10 +57,10 @@ const StartGameScreen = props => {
     return(
         <TouchableWithoutFeedback onPress={() => {Keyboard.dismiss();}}> 
             <View style={styles.screen} >
-                <Text style={styles.title}>Start a New Game!</Text> 
+                <Text style={styles.title}>Start a New Game!</Text>
                 <Card style={styles.inputContainer}>
                     <View style={styles.inputContainer}>
-                        <Text style={styles.fontRegular}> Enter a Number </Text>
+                        <BodyText> Enter a Number </BodyText>
                         <Input style={styles.input} 
                         blurOnSubmit 
                         autoCapitalize="none" 
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
         width: 300,
         maxWidth: "100%",
         alignItems: "center",
-        // fontFamily: "bold"
+        fontFamily: "bold"
     },
     buttonContainer: {
         flexDirection: "row",
