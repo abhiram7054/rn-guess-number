@@ -3,13 +3,14 @@ import { Text, StyleSheet } from "react-native";
 
 const BoldText = props => {
     return (
-        <Text style={styles.fontBold}>{props.children}</Text>
+        <Text style={{...styles.fontBold, ...props.style}}>{props.children}</Text>
     );
 }
 
 const styles=StyleSheet.create({
     fontBold: {
-        fontFamily: "bold"
+        fontFamily: "bold",
+        fontSize: 20,
     }
 });
 

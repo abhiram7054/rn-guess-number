@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Button, Image } from "react-native";
+import Colors from "../constants/colors";
 import BodyText from "../components/bodyText";
 import BoldText from "../components/boldText";
 
@@ -9,10 +10,15 @@ const GameOverScreen = props => {
             <BoldText>The Game is Over!!</BoldText>
             <View style={styles.imageContainer} >
                 {/* <Image source={require("../assets/gameover.png")} style={styles.image} resizeMode="cover" /> */}
-                <Image fadeDuration={300} source={{uri: "https://e1.pngegg.com/pngimages/984/940/png-clipart-es-game-over-text-thumbnail.png"}} style= {styles.image} resizeMode="cover" />
+                <Image fadeDuration={300} source={{uri: "https://png.pngtree.com/element_origin_min_pic/16/08/05/0857a3dba9ed50f.jpg"}} style= {styles.image} resizeMode="cover" />
             </View>
-            <BodyText>The number of rounds are: {props.roundNumber}</BodyText>
-            <BodyText>The number was: {props.userNumber}</BodyText>
+            <View style={styles.textContainer}>
+                <BoldText style={styles.textALigner}>Your Phone took :  
+                    <Text style={styles.highlight}>{props.roundNumber}</Text> rounds to guess the number : 
+                    <Text style={styles.highlight}>{props.userNumber}</Text>
+                </BoldText>
+            </View>
+            {/* <BodyText>The number was: {props.userNumber}</BodyText> */}
             <Button title="NEW GAME" onPress={props.onRestart} />
         </View> 
     );
@@ -34,6 +40,17 @@ const styles = StyleSheet.create({
     image: {
         width: "100%",
         height: "100%"
+    },
+    textContainer:{
+        marginHorizontal: 30,
+    },
+    textALigner:{
+        textAlign:"center",
+        fontFamily:"regular",
+    },
+    highlight: {
+        fontFamily: "bold",
+        color: Colors.primary,
     }
 });
 
