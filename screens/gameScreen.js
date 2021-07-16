@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, Text, StyleSheet, Button, Alert } from "react-native";
+import { View, Text, StyleSheet, Button, Alert, ScrollView } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 import NumberContainer from "../components/numberContainer";
@@ -23,8 +23,9 @@ const generateRandomBetween = (min, max, exclude) => {
 
 
 const GameScreen = props => {
-    const [currentGuess, setCurrentGuess] = useState(generateRandomBetween(1,100,props.userChoice));
-    const [rounds,setRounds] = useState(0);
+    const initialGuess =generateRandomBetween(1,100,props.userChoice);
+    const [currentGuess, setCurrentGuess] = useState(initialGuess);
+    const [pastGuesses,setPastGuesses] = useState([initialGuess]);
 
     const currentLow = useRef(1);
     const currentHigh = useRef(100);
@@ -33,7 +34,7 @@ const GameScreen = props => {
 
     useEffect(() => {
         if (currentGuess === userChoice) {
-            onGameOver(rounds);
+            onGameOver(pastGuesses.length);
         }
     }, [currentGuess, userChoice, onGameOver ]);
 
@@ -46,11 +47,12 @@ const GameScreen = props => {
             currentHigh.current = currentGuess;
         }
         else {
-            currentLow.current = currentGuess;
+            currentLow.current = currentGuess + 1; //to deal with the keys in the list
         }
         const nextNumber= generateRandomBetween(currentLow.current, currentHigh.current, currentGuess);
         setCurrentGuess(nextNumber);
-        setRounds(curRounds => curRounds + 1);
+        // setRounds(curRounds => curRounds + 1);
+        setPastGuesses(currPastGuesses => [nextNumber, ...currPastGuesses]);
     };
 
 
@@ -66,6 +68,11 @@ const GameScreen = props => {
                 <AntDesign name="upcircle" size={24} color={Colors.primary} />
                 </MainButton>
             </Card>
+            <View style={styles.surround}>
+                <ScrollView>
+                    {pastGuesses.map((guess, index) => <View key={guess}><MainButton style={styles.listItem}>#{pastGuesses.length - index}    {guess}</MainButton></View>)}
+                </ScrollView>
+            </View>
         </View>
     );
 };
@@ -81,7 +88,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flexDirection: "row",
         justifyContent: "space-around",
-        marginTop: 20,
+        marginVertical: 20,
         width: 400,
         maxWidth: "80%",
     },
@@ -90,6 +97,12 @@ const styles = StyleSheet.create({
     },
     fontBold: {
         fontFamily: "bold",
+    },
+    listItem: {
+        marginVertical:2,
+    },
+    surround: {
+        flex: 1,
     }
 });
 

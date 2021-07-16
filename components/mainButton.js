@@ -15,6 +15,7 @@ const MainButton = props => {
 
 const styles = StyleSheet.create({
     button: {
+        // flex: 1,
         backgroundColor: "#ededeb",
         paddingVertical: 12,
         paddingHorizontal: 25,

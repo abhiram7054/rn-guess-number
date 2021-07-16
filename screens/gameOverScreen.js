@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     },
     textContainer:{
         marginHorizontal: 30,
+        marginBottom:30,
     },
     textALigner:{
         textAlign:"center",
