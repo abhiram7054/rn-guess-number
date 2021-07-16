@@ -69,7 +69,7 @@ const GameScreen = props => {
                 </MainButton>
             </Card>
             <View style={styles.surround}>
-                <ScrollView>
+                <ScrollView contentContainerStyle={styles.scroll}>
                     {pastGuesses.map((guess, index) => <View key={guess}><MainButton style={styles.listItem}>#{pastGuesses.length - index}    {guess}</MainButton></View>)}
                 </ScrollView>
             </View>
@@ -103,6 +103,11 @@ const styles = StyleSheet.create({
     },
     surround: {
         flex: 1,
+    },
+    scroll: {
+        alignItems: "center",
+        justifyContent: "flex-end",
+        flexGrow:1,
     }
 });
 
